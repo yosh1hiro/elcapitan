@@ -13,20 +13,22 @@ default: &default
   adapter: mysql2
   encoding: utf8
   pool: 5
-  username: root
-  password:
+  username: <%= ENV['MYSQLUSERNAME'] %>
+  password: <%= ENV['MYSQLPASSWORD'] %>
   socket: /tmp/mysql.sock
 
 development:
   <<: *default
-  database: elcapitan_development
+  host: <%= ENV['MYSQLHOST'] %>
+  database: vasily_task_development
 
 # Warning: The database defined as "test" will be erased and
-# re-generated from your development database when you run "rake".
-# Do not set this db to the same as development or production.
+# # re-generated from your development database when you run "rake".
+# # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: elcapitan_test
+  host: <%= ENV['MYSQLHOST'] %>
+  database: vasily_task_test
 
 # As with config/secrets.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
@@ -49,6 +51,6 @@ test:
 #
 production:
   <<: *default
-  database: elcapitan_production
-  username: elcapitan
-  password: <%= ENV['ELCAPITAN_DATABASE_PASSWORD'] %>
+  database: vasily_task_production
+  username: vasily_task
+  password: <%= ENV['VASILY_TASK_DATABASE_PASSWORD'] %>
