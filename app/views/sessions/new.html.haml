@@ -1,2 +1,13 @@
-%h1 Sessions#new
-%p Find me in app/views/sessions/new.html.haml
+%h1 Sign in
+= form_tag sessions_path do
+  .form-inputs
+    .form-group
+      = label_tag :email, "email", class: "control-label"
+      = email_field_tag :email, params[:email], class: "form-control"
+    .form-group
+      = label_tag :password, "password", class: "control-label"
+      = password_field_tag :password, params[:password], class: "form-control"
+    .form-group.form-actions
+      = submit_tag "Sign in", class: "btn btn-primary"
+%div
+  = render 'shared/flash_message'
