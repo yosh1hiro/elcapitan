@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  get 'favorite_items/index'
+
+  get 'favorite_items/create'
+
+  get 'favorite_items/destroy'
+
   resources :users
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
