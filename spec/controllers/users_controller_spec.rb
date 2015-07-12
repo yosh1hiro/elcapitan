@@ -29,7 +29,7 @@ describe UsersController do
 
   end
 
-  shared_examples 'public access to users' do
+  shared_examples 'correct user access to users' do
 
     describe 'GET #show' do
       it "assigns the requested user to @user" do
@@ -144,14 +144,14 @@ describe UsersController do
       set_user_session(create(:admin))
     end
     it_behaves_like 'admin access to users'
-    it_behaves_like 'public access to users'
+    it_behaves_like 'correct user access to users'
   end
 
   describe 'user access' do
     before :each do
-      set_user_session(create(:user, email: "a@gmail.com"))
+      set_user_session(create(:user, email: 'aaa@gmail.com'))
     end
-    it_behaves_like 'public access to users'
+    it_behaves_like 'correct user access to users'
   end
 
   describe 'guest access' do
@@ -159,7 +159,7 @@ describe UsersController do
     describe 'GET #index' do
       it "redirects root_url" do
         get :index
-        expect(response).to redirect_to login_url
+        expect(response).to redirect_to root_url
       end
     end
 
@@ -175,7 +175,7 @@ describe UsersController do
       it "redirects root_url" do
         user = create(:user)
         get :edit, id: user
-        expect(response).to redirect_to login_url
+        expect(response).to redirect_to root_url
       end
     end
 
@@ -184,14 +184,14 @@ describe UsersController do
       it "redirects root_url" do
         put :update, id: create(:user),
         user: attributes_for(:user)
-        expect(response).to redirect_to login_url
+        expect(response).to redirect_to root_url
       end
     end
 
     describe 'DELETE #destroy' do
       it "redirects root_url" do
         delete :destroy, id: create(:user)
-        expect(response).to redirect_to login_url
+        expect(response).to redirect_to root_url
       end
     end
   end

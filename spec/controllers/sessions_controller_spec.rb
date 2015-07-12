@@ -9,16 +9,16 @@ RSpec.describe SessionsController, type: :controller do
     end
   end
 
-  describe "GET #create" do
+  describe "POST #create" do
     it "returns http success" do
-      get :create
+      post :create
       expect(response).to have_http_status(:success)
     end
   end
 
-  describe "GET #destroy" do
+  describe "DELETE #destroy" do
     it "returns http success" do
-      get :destroy
+      delete :destroy
       expect(response).to have_http_status(:success)
     end
   end

@@ -3,9 +3,9 @@ class SessionsController < ApplicationController
   end
 
   def create
-    user = User.find_by(email: params[:email].downcase)
+    user = User.find_by(email: params[:email])
     if user && user.authenticate(params[:password])
-      sign_in user
+      login user
       redirect_to root_url, notice: 'ログインしました'
     else
       flash.alert = 'ログイン名またはパスワードが正しくありません。'

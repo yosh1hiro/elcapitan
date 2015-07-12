@@ -6,7 +6,7 @@ FactoryGirl.define do
     password_confirmation 'secret'
 
     factory :admin do
-      name 'admin..mayname'
+      name 'admin.mayname'
       email Faker::Internet.email
     end
 
