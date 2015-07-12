@@ -1,2 +1,7 @@
-%h1 Timeline#index
-%p Find me in app/views/timeline/index.html.haml
+.list-group
+  - @medias.each do |media|
+    = link_to media.link, :target => "_blank", class: "list-group-item" do
+      %h4<
+        = image_tag(media.images.low_resolution.url)
+      %p<
+        = media.caption.text unless media.caption.nil?

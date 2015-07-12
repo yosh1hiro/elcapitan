@@ -1,12 +1,10 @@
 require 'rails_helper'
 
-RSpec.describe TimelineController, type: :controller do
-
-  describe "GET #index" do
-    it "returns http success" do
+describe TimelineController do
+  describe 'GET #index' do
+    it "gets a response from an instagram api" do
       get :index
-      expect(response).to have_http_status(:success)
+      expect(:medias.size).to be_between(2, 100)
     end
   end
-
 end
