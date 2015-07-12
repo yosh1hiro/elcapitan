@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'timeline/index'
+
   get 'favorite_items/index'
 
   get 'favorite_items/create'
