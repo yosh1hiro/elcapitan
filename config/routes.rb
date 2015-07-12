@@ -1,19 +1,17 @@
 Rails.application.routes.draw do
   root 'timeline#index'
-  get 'timeline/index'
-
-  get 'favorite_items/index'
-
-  get 'favorite_items/create'
-
-  get 'favorite_items/destroy'
-
-  resources :users
-  resources :sessions, only: [:new, :create, :destroy]
 
   match '/signup',  to: 'users#new',            via: 'get'
   match '/login',  to: 'sessions#new',         via: 'get'
   match '/logout', to: 'sessions#destroy',     via: 'delete'
+
+  resources :users do
+    get :favorites, on: :member
+  end
+  resources :sessions, only: [:new, :create, :destroy]
+  resources :favorite_items, only: [:index, :create, :destroy]
+  get 'timeline/index'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
