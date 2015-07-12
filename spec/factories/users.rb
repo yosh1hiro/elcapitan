@@ -1,9 +1,17 @@
 FactoryGirl.define do
   factory :user do
-    name "MyString"
-email "MyString"
-password_digest "MyString"
-auto_login_token "MyString"
-  end
+    name Faker::Name.name
+    email Faker::Internet.email
+    password 'secret'
+    password_confirmation 'secret'
 
+    factory :admin do
+      name 'admin..mayname'
+      email Faker::Internet.email
+    end
+
+    factory :invalid_user do
+      name nil
+    end
+  end
 end
