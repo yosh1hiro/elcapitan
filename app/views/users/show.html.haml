@@ -1,5 +1,6 @@
 %p#notice= notice
-
+%br
+%br
 %p
   %b Name:
   = @user.name
@@ -7,11 +8,10 @@
   %b Email:
   = @user.email
 %p
-  %b Password digest:
-  = @user.password_digest
-%p
-  %b Auto login token:
-  = @user.auto_login_token
+  %b Favorite:
+  = @user.favorite_items.count
+  - @user.favorite_items.each do |item|
+    = item.item
 
 = link_to 'Edit', edit_user_path(@user)
 \|

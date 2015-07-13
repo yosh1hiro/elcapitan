@@ -5,3 +5,10 @@
         = image_tag(media.images.low_resolution.url)
       %p<
         = media.caption.text unless media.caption.nil?
+    .content-footer
+      - if favorited? media
+        = link_to "お気に入りの解除", favorite_item_path(favorite_item_id(media.id)), method: :delete
+      - else
+        = form_tag favorite_items_path do
+          = hidden_field_tag :item, media.id
+          = submit_tag
