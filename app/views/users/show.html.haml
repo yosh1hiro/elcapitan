@@ -10,8 +10,6 @@
 %p
   %b Favorite:
   = @user.favorite_items.count
-  - @user.favorite_items.each do |item|
-    = item.item
 
 = link_to 'Edit', edit_user_path(@user)
 \|
